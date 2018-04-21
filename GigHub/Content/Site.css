@@ -61,6 +61,18 @@ span.field-validation-error {
 .navbar-brand {
     font-weight: 700;
 }
+
+.navbar-inverse .notifications {
+    position: relative;
+}
+
+.navbar-inverse .notifications {
+    position: absolute;
+    top: 8px;
+    right: -1px;
+    background: #a80a0a;
+}
+
 body {
     font-size: 17px;
 }
