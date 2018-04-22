@@ -62,15 +62,15 @@ span.field-validation-error {
     font-weight: 700;
 }
 
-.navbar-inverse .notifications {
+#logoutForm .navbar-nav {
     position: relative;
 }
 
-.navbar-inverse .notifications {
+.badge.js-notifications-count {
     position: absolute;
     top: 8px;
     right: -1px;
-    background: #a80a0a;
+    background-color: #650b0b;
 }
 
 body {
