@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GigHub.Repositories
 {
-    public class GenreRepository
+    public class GenreRepository : IGenreRepository
     {
         private readonly ApplicationDbContext _context;
 
