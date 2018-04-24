@@ -26,14 +26,8 @@ namespace GigHub.Core.Models
 
         public UserNotification(ApplicationUser user, Notification notification)
         {
-            if (user == null)
-                throw new ArgumentNullException("user");
-
-            if (notification == null)
-                throw new ArgumentNullException("notification");
-
-            User = user;
-            Notification = notification;
+            User = user ?? throw new ArgumentNullException("user");
+            Notification = notification ?? throw new ArgumentNullException("notification");
         }
 
         public void Read()

@@ -20,11 +20,8 @@ namespace GigHub.Core.Models
 
         private Notification(NotificationType type, Gig gig)
         {
-            if (gig == null)
-                throw new ArgumentNullException("gig");
-
+            Gig = gig ?? throw new ArgumentNullException("gig");
             Type = type;
-            Gig = gig;
             DateTime = DateTime.Now;
         }
 
@@ -35,9 +32,11 @@ namespace GigHub.Core.Models
 
         public static Notification GigUpdated(Gig newGig, DateTime originalDateTime, string originalVenue)
         {
-            var notification = new Notification(NotificationType.GigUpdated, newGig);
-            notification.OriginalDateTime = originalDateTime;
-            notification.OriginalVenue = originalVenue;
+            var notification = new Notification(NotificationType.GigUpdated, newGig)
+            {
+                OriginalDateTime = originalDateTime,
+                OriginalVenue = originalVenue
+            };
 
             return notification;
         }

@@ -120,7 +120,7 @@ namespace GigHub.Controllers
                 return View("GigForm", viewModel);
             }
 
-            var gig = _unitOfWork.Gigs.GetGigWithAttendeeds(viewModel.Id);
+            var gig = _unitOfWork.Gigs.GetGigWithAttendees(viewModel.Id);
 
             if (gig == null)
                 return HttpNotFound();
