@@ -24,12 +24,23 @@ namespace GigHub.Persistence.Repositories
                 .SingleOrDefault(g => g.Id == id);
         }
 
-        public IEnumerable<Gig> GetUpcomingGigs()
+        public IEnumerable<Gig> GetUpcomingGigs(string searchTerm = null)
         {
-            return _context.Gigs
+            var upcomingGigs = _context.Gigs
                 .Include(g => g.Artist)
                 .Include(g => g.Genre)
                 .Where(g => g.DateTime > DateTime.Now && !g.IsCancelled);
+
+            if (!String.IsNullOrWhiteSpace(searchTerm))
+            {
+                upcomingGigs = upcomingGigs
+                    .Where(g =>
+                        g.Artist.Name.Contains(searchTerm) ||
+                        g.Genre.Name.Contains(searchTerm) ||
+                        g.Venue.Contains(searchTerm));
+            }
+
+            return upcomingGigs.ToList();
         }
 
         public IEnumerable<Gig> GetGigsUserAttending(string userId)

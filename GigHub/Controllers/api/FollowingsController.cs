@@ -22,7 +22,7 @@ namespace GigHub.Controllers.api
             if (_unitOfWork.Followings.GetFollowing(userId, dto.FolloweeId) != null)
                 return BadRequest("Already following.");
 
-            var following = new Following()
+            var following = new Following
             {
                 FollowerId = userId,
                 FolloweeId = dto.FolloweeId
@@ -38,8 +38,8 @@ namespace GigHub.Controllers.api
         public IHttpActionResult Unfollow(string id)
         {
             var userId = User.Identity.GetUserId();
-            var following = _unitOfWork.Followings
-                .GetFollowing(userId, id);
+
+            var following = _unitOfWork.Followings.GetFollowing(userId, id);
 
             if (following == null)
                 return NotFound();
