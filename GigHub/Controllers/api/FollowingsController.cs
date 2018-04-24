@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace GigHub.Controllers.api
 {
+    [Authorize]
     public class FollowingsController : ApiController
     {
         private readonly UnitOfWork _unitOfWork;
