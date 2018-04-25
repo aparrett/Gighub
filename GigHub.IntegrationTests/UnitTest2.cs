@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Internal;
+using System;
 
 namespace GigHub.IntegrationTests
 {
@@ -8,10 +10,7 @@ namespace GigHub.IntegrationTests
         [Test]
         public void TestMethod1()
         {
-            var test = 1;
-            var result = 1;
-
-            Assert.That(result, Is.EqualTo(test));
+            Console.WriteLine("test");
         }
     }
 }
