@@ -1,4 +1,4 @@
-﻿using GigHub.Persistence;
+﻿using GigHub.Core;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 
@@ -7,9 +7,9 @@ namespace GigHub.Controllers.api
     [Authorize]
     public class GigsController : ApiController
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController(UnitOfWork unitOfWork)
+        public GigsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
