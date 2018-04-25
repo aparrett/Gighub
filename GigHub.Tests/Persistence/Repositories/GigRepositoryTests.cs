@@ -1,7 +1,9 @@
-﻿using GigHub.Persistence;
+﻿using GigHub.Core.Models;
+using GigHub.Persistence;
 using GigHub.Persistence.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Data.Entity;
 
 namespace GigHub.Tests.Persistence.Repositories
 {
@@ -13,7 +15,10 @@ namespace GigHub.Tests.Persistence.Repositories
         [TestInitialize]
         public void TestInitialize()
         {
+            var mockGigs = new Mock<DbSet<Gig>>();
+
             var mockContext = new Mock<IApplicationDbContext>();
+            mockContext.SetupGet(c => c.Gigs).Returns(mockGigs.Object);
 
             _repository = new GigRepository(mockContext.Object);
         }
