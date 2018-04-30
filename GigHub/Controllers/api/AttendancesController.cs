@@ -49,7 +49,6 @@ namespace GigHub.Controllers.api
             _unitOfWork.Complete();
 
             return Ok(id);
-
         }
     }
 }
