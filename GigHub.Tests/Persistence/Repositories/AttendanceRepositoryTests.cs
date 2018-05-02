@@ -66,5 +66,41 @@ namespace GigHub.Tests.Persistence.Repositories
 
             attendances.Should().Contain(attendance);
         }
+
+        [Test]
+        public void GetAttendance_WhenCalled_ShouldReturnAttendanceWithGigIdAndAttendeeId()
+        {
+            var attendance = new Attendance {AttendeeId = "1", GigId = 1};
+
+            _mockAttendances.SetSource(new[] {attendance});
+
+            var attendanceFromRepository = _repository.GetAttendance(2, "1");
+
+            attendanceFromRepository.Should().BeNull();
+        }
+
+        [Test]
+        public void GetAttendance_AttendanceForDifferentUser_ShouldNotBeReturned()
+        {
+            var attendance = new Attendance {AttendeeId = "1", GigId = 1};
+
+            _mockAttendances.SetSource(new[] {attendance});
+
+            var attendanceFromRepository = _repository.GetAttendance(1, "2");
+
+            attendanceFromRepository.Should().BeNull();
+        }
+
+        [Test]
+        public void GetAttendance_AttendanceForUserAndGig_ShouldBeReturned()
+        {
+            var attendance = new Attendance {AttendeeId = "1", GigId = 1};
+
+            _mockAttendances.SetSource(new[] {attendance});
+
+            var attendanceFromRepository = _repository.GetAttendance(1, "1");
+
+            attendanceFromRepository.Should().BeOfType<Attendance>();
+        }
     }
 }
