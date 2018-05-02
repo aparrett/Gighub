@@ -25,10 +25,8 @@ namespace GigHub.Tests.Persistence.Repositories
             var mockContext = new Mock<IApplicationDbContext>();
             mockContext.SetupGet(c => c.UserNotifications).Returns(_mockUserNotifications.Object);
 
-
             _repository = new NotificationRepository(mockContext.Object);
         }
-
 
         [Test]
         public void GetUnreadNotifications_NotificationIsRead_ShouldNotBeReturned()
@@ -39,9 +37,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockUserNotifications.SetSource(new[] { userNotification });
 
-            var unreadNotifications = _repository.GetUnreadNotifications(user.Id);
+            var notifications = _repository.GetUnreadNotifications(user.Id);
 
-            unreadNotifications.Should().BeEmpty();
+            notifications.Should().BeEmpty();
         }
 
         [Test]
@@ -52,9 +50,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockUserNotifications.SetSource(new[] { userNotification });
 
-            var unreadNotifications = _repository.GetUnreadNotifications("2");
+            var notifications = _repository.GetUnreadNotifications("2");
 
-            unreadNotifications.Should().BeEmpty();
+            notifications.Should().BeEmpty();
         }
 
         [Test]
@@ -66,9 +64,10 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockUserNotifications.SetSource(new[] { userNotification });
 
-            var unreadNotifications = _repository.GetUnreadNotifications(user.Id);
+            var notifications = _repository.GetUnreadNotifications(user.Id);
 
-            unreadNotifications.First().Should().BeOfType<Notification>();
+            notifications.Should().HaveCount(1);
+            notifications.First().Should().BeOfType<Notification>();
         }
     }
 }
