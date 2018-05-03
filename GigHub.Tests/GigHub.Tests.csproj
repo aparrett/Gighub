@@ -92,6 +92,7 @@
     <Compile Include="Persistence\Repositories\GigRepositoryTests.cs" />
     <Compile Include="Persistence\Repositories\AttendanceRepositoryTests.cs" />
     <Compile Include="Persistence\Repositories\NotificationRepositoryTests.cs" />
+    <Compile Include="Persistence\Repositories\GenreRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
