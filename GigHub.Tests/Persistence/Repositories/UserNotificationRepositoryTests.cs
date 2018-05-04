@@ -25,6 +25,7 @@ namespace GigHub.Tests.Persistence.Repositories
         }
 
         [Test]
+        [Ignore("Incomplete")]
         public void GetUnread()
         {
         }

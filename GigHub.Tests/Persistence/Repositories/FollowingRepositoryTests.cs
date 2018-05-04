@@ -17,7 +17,7 @@ namespace GigHub.Tests.Persistence.Repositories
         private Mock<DbSet<Following>> _mockFollowings;
 
         [SetUp]
-        public void TestInitialize()
+        public void SetUp()
         {
             _mockFollowings = new Mock<DbSet<Following>>();
 
@@ -34,9 +34,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockFollowings.SetSource(new[] { following });
 
-            var followings = _repository.GetFollowing("3", "2");
+            var followingFromRepository = _repository.GetFollowing("3", "2");
 
-            followings.Should().BeEmpty();
+            followingFromRepository.Should().BeNull();
         }
 
         [Test]
@@ -46,9 +46,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockFollowings.SetSource(new[] { following });
 
-            var followings = _repository.GetFollowing("1", "3");
+            var followingFromRepository = _repository.GetFollowing("1", "3");
 
-            followings.Should().BeEmpty();
+            followingFromRepository.Should().BeNull();
         }
 
         [Test]
@@ -58,9 +58,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockFollowings.SetSource(new[] { following });
 
-            var followings = _repository.GetFollowing("1", "2");
+            var followingFromRepository = _repository.GetFollowing("1", "2");
 
-            followings.Should().BeEmpty();
+            followingFromRepository.Should().BeOfType<Following>();
         }
     }
 }
