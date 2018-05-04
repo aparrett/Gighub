@@ -3,21 +3,21 @@ using GigHub.Core.Models;
 using GigHub.Persistence;
 using GigHub.Persistence.Repositories;
 using GigHub.Tests.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 using System;
 using System.Data.Entity;
 
 namespace GigHub.Tests.Persistence.Repositories
 {
-    [TestClass]
+    [TestFixture]
     public class GigRepositoryTests
     {
         private GigRepository _repository;
         private Mock<DbSet<Gig>> _mockGigs;
 
-        [TestInitialize]
-        public void TestInitialize()
+        [SetUp]
+        public void SetUp()
         {
             _mockGigs = new Mock<DbSet<Gig>>();
 
@@ -27,7 +27,7 @@ namespace GigHub.Tests.Persistence.Repositories
             _repository = new GigRepository(mockContext.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpcomingGigsByArtist_GigIsInThePast_ShouldNotBeReturned()
         {
             var gig = new Gig { DateTime = DateTime.Now.AddDays(-1), ArtistId = "1" };
@@ -39,7 +39,7 @@ namespace GigHub.Tests.Persistence.Repositories
             gigs.Should().BeEmpty();
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpcomingGigsByArtist_GigIsCancelled_ShouldNotBeReturned()
         {
             var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
@@ -52,7 +52,7 @@ namespace GigHub.Tests.Persistence.Repositories
             gigs.Should().BeEmpty();
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpcomingGigsByArtist_GigHasDifferentArtist_ShouldNotBeReturned()
         {
             var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
@@ -64,7 +64,7 @@ namespace GigHub.Tests.Persistence.Repositories
             gigs.Should().BeEmpty();
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpcomingGigsByArtist_GigIsForGivenArtistAndInFuture_ShouldBeReturned()
         {
             var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
