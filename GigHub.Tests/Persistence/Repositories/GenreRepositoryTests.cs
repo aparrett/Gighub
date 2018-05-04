@@ -34,10 +34,9 @@ namespace GigHub.Tests.Persistence.Repositories
 
             _mockGenres.SetSource(new[] { genre });
 
-            var result = _repository.GetGenres();
+            var genres = _repository.GetGenres();
 
-            result.Should().Contain(genre);
-            result.Should().HaveCount(1);
+            genres.Should().Contain(genre);
         }
     }
 }
