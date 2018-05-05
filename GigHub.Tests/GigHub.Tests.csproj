@@ -92,6 +92,7 @@
     <Compile Include="Controllers\Api\FollowingsControllerTests.cs" />
     <Compile Include="Controllers\Api\NotificationsControllerTests.cs" />
     <Compile Include="Domain\Models\GigTests.cs" />
+    <Compile Include="Domain\Models\ApplicationUserTests.cs" />
     <Compile Include="Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Extensions\MockDbSetExtensions.cs" />
     <Compile Include="Persistence\Repositories\GigRepositoryTests.cs" />
