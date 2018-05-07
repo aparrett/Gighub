@@ -1,6 +1,6 @@
 # Gighub
 
-Gighub is a sample web application for monitoring and sharing music Gigs.  I made this project following along with Mosh Hamedani's three "Become a Full-stack .NET Developer" courses on PluralSight.
+Gighub is a sample web application for monitoring and sharing music Gigs.  I made this project following along with Mosh Hamedani's three "Become a Full-stack .NET Developer" courses on PluralSight.  I have added tests that were outside of the scope of the course but the application does not have full test coverage at this time.
 
 ## Built With
 
