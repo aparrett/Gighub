@@ -4,7 +4,7 @@ Gighub is a sample web application for monitoring and sharing music Gigs.  I mad
 
 ## Built With
 
-* [ASP.NET MVC 5] - C# framework
+* [ASP.NET MVC 5] - ASP.NET framework
 * [Entity Framework 6] - ORM
 * [Automapper] - Convention Based object-object mapper
 * [NUnit] - Unit Test Framework
